@@ -14,3 +14,8 @@ def getConf(prop: str) -> Properties:
 def logDebug(data: str):
     if getConf("IS_DEV"):
         print(data)
+        
+def printe(data: any):
+    if getConf("IS_DEV"):
+        print(data)
+        exit()
