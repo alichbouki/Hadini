@@ -30,7 +30,7 @@ htmlSrc = browser.page_source
 
 print(htmlSrc)
 
-with open("./index.html", 'x') as htmlFile:
+with open("./tmp/index.html", 'x') as htmlFile:
     htmlFile.write(htmlSrc)
     htmlFile.close()
 
