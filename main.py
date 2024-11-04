@@ -7,10 +7,7 @@ loginData = {
     "password": getConf("PASSWORD")
 }
 
-with open("./tmp/index.html", 'r') as htmlFile:
-    htmlSrc = htmlFile.read()
-
-# htmlSrc = fetchaHtml(loginData)
-# logDebug(htmlSrc)
-
+htmlSrc = fetchHtml(loginData)
 calendar = parseHtml(htmlSrc)
+
+print(calendar)
