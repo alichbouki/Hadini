@@ -1,4 +1,5 @@
 from datetime import *
+from datetime import timedelta
 from helpers import *
 
 def parseHtml(html: str):
@@ -49,10 +50,12 @@ def parseHtml(html: str):
         )
         classStartTime = time(int(session[0]), int(session[1]))
         
+        endingTime = datetime.combine(classDate, classStartTime) + timedelta(minutes = int(session[2]))
         calendar[str(data[0])].append({
             "class": session[3],
-            "startingHour": datetime.combine(classDate, classStartTime),
-            "classDuration": session[2]
+            "startingTime": 
+                datetime.combine(classDate, classStartTime).isoformat(),
+            "endingTime": endingTime.isoformat()                
         })
         
         sessions[id] = session
