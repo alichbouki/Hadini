@@ -1,32 +1,13 @@
 from datetime import *
-from datetime import timedelta
-from helpers import *
 
-def parseHtml(html: str):
-    list1 = html.split("DessinePlanningSemaineEx")
-    list2 = list1[1].split("afficheTout")
+def formatData(data: dict) -> dict:
+    dates = data["dates"]
+    sessions = data["sessions"]
     
-    data = list2[0]
-    
-    tmpDates = data.removeprefix('(').replace("'", '').split(')')[0].split(',')
-    dates = []
-    
-    for session in range(0,7):
-        dates.append(tmpDates[session])
-        
-    for _date in dates:
-        id = dates.index(_date)
-        
-        date1 = _date.split("/")
-        
-        dates[id] = date1
-        
-    # print(dates)
-    
-    sessions = data.removeprefix("AjouterRDV").split("AjouterRDV")
-    sessions.pop(0)
+    now = datetime.now().isoformat()
     
     calendar = {
+        "updatedOn": now,
         "1":[],
         "2":[],
         "3":[],
@@ -50,17 +31,16 @@ def parseHtml(html: str):
         )
         classStartTime = time(int(session[0]), int(session[1]))
         
+        startingTime = datetime.combine(classDate, classStartTime).isoformat(),
         endingTime = datetime.combine(classDate, classStartTime) + timedelta(minutes = int(session[2]))
+        
         calendar[str(data[0])].append({
             "class": session[3],
-            "startingTime": 
-                datetime.combine(classDate, classStartTime).isoformat(),
-            "endingTime": endingTime.isoformat()                
+            "startingTime": startingTime,
+            "endingTime": endingTime.isoformat(),
+            "classDuration": session[2]
         })
         
         sessions[id] = session
     
-    return calendar    
-        
-    # print(calendar)
-    
+    return calendar

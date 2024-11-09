@@ -6,7 +6,9 @@
 	],
 	"settings": {
 		"cSpell.words": [
-			"jproperties"
+			"jproperties",
+			"Tele",
+			"telebot"
 		]
 	}
 }

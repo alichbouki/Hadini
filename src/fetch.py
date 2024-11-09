@@ -1,5 +1,5 @@
 from selenium import webdriver
-from helpers import *
+from src.helpers import *
 
 def fetchHtml(loginData: dict) -> str:
     LOGIN_BTN_ID = "#Button1"
@@ -9,8 +9,8 @@ def fetchHtml(loginData: dict) -> str:
     LOGIN_URL = "https://universitic.ueuromed.org/konosys/PC_MV_login.aspx"
     CALENDAR_URL = "https://universitic.ueuromed.org/konosys/interfaces/MonPlanning_Utilisateur_Lot.aspx"
 
-    USERNAME = str(loginData["login"]).replace("\"", "")
-    PASSWORD = str(loginData["password"]).replace("\"", "")
+    USERNAME = str(loginData["login"])
+    PASSWORD = str(loginData["password"])
     
     logDebug("Starting a new Firefox instance....")
 
