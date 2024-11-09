@@ -31,12 +31,12 @@ def formatData(data: dict) -> dict:
         )
         classStartTime = time(int(session[0]), int(session[1]))
         
-        startingTime = datetime.combine(classDate, classStartTime).isoformat(),
+        startingTime = datetime.combine(classDate, classStartTime)
         endingTime = datetime.combine(classDate, classStartTime) + timedelta(minutes = int(session[2]))
         
         calendar[str(data[0])].append({
             "class": session[3],
-            "startingTime": startingTime,
+            "startingTime": startingTime.isoformat(),
             "endingTime": endingTime.isoformat(),
             "classDuration": session[2]
         })
